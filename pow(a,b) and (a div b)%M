@@ -1,0 +1,22 @@
+                                                      //Binary exponentition pow(a,b)
+long long power(int a,int b){           
+    if(b==0) return 1;
+    long long res = power(a,b/2);
+    if(b%2==1){
+        return a*res*res;
+    } else{
+        return res*res;
+    }
+}
+
+
+                                                         // return reverse of a number, to calculate (a/b)%M => (a * power(b))%M
+long long power(int a,int b, int M){               
+    if(b==0) return 1;
+    long long res = power(a,b/2,M);
+    if(b%2==1){
+        return ((a)%mod*(res)%mod*(res)%mod)%mod;
+    } else{
+        return ((res)%mod*(res)%mod)%mod;
+    }
+}
