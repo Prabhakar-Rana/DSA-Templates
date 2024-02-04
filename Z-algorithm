@@ -1,0 +1,22 @@
+vector<int> z_funtion(string s){                       //for string matching pass    pat + "$" + text
+          int l=0,r=0;
+          vector<int>z(s.size());
+          for(int i=1;i<s.size();i++){
+              if(i>r){
+                  l=r=i;
+                  while(r<s.size() && s[r]==s[r-l]) r++;
+                  z[i]=r-l;
+                  r--;
+              } else{
+                  int idx = i-l;
+                  if(z[idx]+i<=r) z[i]=z[idx];
+                  else{
+                      l=i;
+                      while(r<s.size() && s[r]==s[r-l]) r++;
+                      z[i]=r-l;
+                      r--;
+                  }
+              }
+          }
+          return z;
+   }
